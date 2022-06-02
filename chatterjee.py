@@ -1,4 +1,5 @@
 import pandas as pd
+from pandas.api.types import is_list_like as is_list
 
 def chatt(X, Y):
     """
@@ -13,12 +14,19 @@ def chatt(X, Y):
         ksi[float]: Value of chatterjee correlation
     """
 
+    # check if variables are lists
+    def is_num_list(list_like): 
+        if is_list(list_like) and all([type(item) == int or type(item) == float for item in list_like]):
+            pass
+        else:
+            raise TypeError(f'{list_like} does not seem to be a list-like full of numbers')
+
+    is_num_list(X)
+    is_num_list(Y)
+
     # to DataFrame and sort
     df_dict = {'X':X, 'Y':Y}
-    df = pd.DataFrame(df_dict)
-
-    sorted_list = df.sort_values('X')['Y']
-
+    sorted_list = pd.DataFrame(df_dict).sort_values('X')['Y']
     n_obs = len(sorted_list)
 
     # nominator
