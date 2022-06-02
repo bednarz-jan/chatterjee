@@ -1,3 +1,11 @@
+"""
+Implementation of Chatterjee ksi in Python
+chatt(X, Y) - Calculates Chatterjee ksi correlation, correlation is asymmetrical,
+    it's checking Y = f(X)
+chatt_table(df) - creates a correlation table based on chatterjee ksi, analogue to pd.corr()
+requires Pandas
+"""
+
 import pandas as pd
 from pandas.api.types import is_list_like as is_list
 
