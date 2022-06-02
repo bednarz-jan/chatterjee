@@ -15,8 +15,8 @@ def chatt(X, Y):
     """
 
     # check if variables are lists
-    def is_num_list(list_like): 
-        if is_list(list_like) and all([type(item) == int or type(item) == float for item in list_like]):
+    def is_num_list(list_like):
+        if is_list(list_like) and all(isinstance(item, (int, float)) for item in list_like):
             pass
         else:
             raise TypeError(f'{list_like} does not seem to be a list-like full of numbers')
