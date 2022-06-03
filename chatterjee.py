@@ -3,11 +3,13 @@ Implementation of Chatterjee ksi in Python
 chatt(X, Y) - Calculates Chatterjee ksi correlation, correlation is asymmetrical,
     it's checking Y = f(X)
 chatt_table(df) - creates a correlation table based on chatterjee ksi, analogue to pd.corr()
-requires Pandas
+requires Pandas, numpy and scipy.stats
 """
 
 import pandas as pd
 from pandas.api.types import is_list_like as is_list
+import scipy.stats as ss
+import numpy as np
 
 def chatt(X, Y):
     """
@@ -74,3 +76,17 @@ def chatt_table(df):
                 ksi = chatt(df[i], df[j])
             df_chatt[i][j] = ksi
     return df_chatt
+
+def chatt_pval(X, Y):
+    """calculates simplified (assuming no ties in ranking) p_value
+    for test of independence 
+
+    Args:
+        X (list-like): First variable used for correlation
+        Y (list-like): Second variable used for correlation
+
+    Returns:
+        flaot: p_value of test of independence
+    """
+    return 1 - ss.norm.cdf(
+        np.sqrt(len(X)) * chatt(X, Y) / np.sqrt(2 / 5))
