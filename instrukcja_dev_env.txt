@@ -1,0 +1,68 @@
+Wszystko poniższe zakłada świeżą instalację
+1. System operacyjny - wymagany Windows 10 na start
+	- W powershell (otwartym z adminem) instalujemy WSL 
+	(Windows Services For Linux)
+	wsl --install
+	
+	W powershell instalujemy Ubuntu (lub naszą ulubioną
+	dystrybucję Linuxa)
+	wsl --install -d ubuntu
+	
+	Ubuntu jest już na komputerze, powinno pojawić się
+	w menu start, jak nie to pojawi się po resecie
+	
+2. Python w Ubuntu
+
+	Sam kompilator Pythona już jest w Ubuntu, jednak polecam
+	zainstalować Anacondę
+	
+	Odpalamy Ubuntu, jesteśmy w terminalu - parę podstawowych
+	komend jak się tu poruszać: 
+	https://cheatography.com/davechild/cheat-sheets/linux-command-line/
+		
+	Ściągamy Anacondę (dla innej wersji warto zajrzeć na
+	https://repo.anaconda.com/archive/ i podmienić końcówkę):	
+	curl -O https://repo.anaconda.com/archive/Anaconda3-5.3.1-Linux-x86_64.sh
+	
+	Instalujemy Anacondę:
+	bash Anaconda3-5.3.1-Linux-x86_64.sh
+	
+	Polecam jeszcze upgrade pip
+	pip install pip --upgrade
+	
+	Dystrybucja gotowa
+	
+3. Visual Studio Code jako IDE
+	Na Windowsie pobieramy i instalujemy VS Code
+	(nie ma żadnych komend, po prostu googlujemy)
+	
+	Tam w extensions instalujemy rozszerzenie WSL
+	Jeśli Ubuntu jest włączone VS Code powinien
+	widzieć naszego Linuxa i już na nim przeprowadzać
+	operacje
+	
+	Instalujemy rozszerzenie Python, Jupyter, GIT
+	(wszystko to jest już na Linuxie, ale musi
+	też być obsługa na poziomie IDE)
+	
+	Właściwie można programować
+	
+4. Wirtualne środowiska
+	Każdy projekt polecam przeprowadzać na dedykowanym
+	wirtualnym środowisku
+	
+	Najlepiej w terminalu VS Code w katalogu gdzie chcemy
+	pracować piszemy:	
+	python3 -m venv nazwa_srodowiska
+	
+	Następnie w tym samym terminalu dopisujemy:
+	source nazwa_srodowiska/bin/activate
+	
+	I oto już żyjemy w wirtualnym środowisku
+	
+	Może być jeszcze potrzebna zmiana kernela
+	w VS Codowym Jupyterze - prawy górny róg
+	ekranu i wybieramy z listy
+	
+	
+	
